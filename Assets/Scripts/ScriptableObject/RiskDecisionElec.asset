@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 449cfd18af9407e4fb36daa82fd738e5, type: 3}
+  m_Name: RiskDecisionElec
+  m_EditorClassIdentifier: 
+  intruction: 'Warning: Electrical Hazard<br>An electrical risk has been detected
+    in this area.<br>Inspect the environment and identify the hazardous object by
+    clicking on it'
+  question: What is the correct behavior when facing this electrical risk?
+  answers:
+  - Touch the equipment to check if it is still powered
+  - Isolate the power source and secure the electrical panel
+  - Leave the area without reporting the issue
+  correctIndex: 1
+  securedText: Risk secured.<br>The electrical hazard has been eliminated safely.<br>You
+    can now continue.
