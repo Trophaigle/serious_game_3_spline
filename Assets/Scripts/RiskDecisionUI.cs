@@ -29,7 +29,11 @@ public class RiskDecisionUI : MonoBehaviour
                 decision.answers[i];
 
             answerButtons[i].onClick.RemoveAllListeners();
-            answerButtons[i].onClick.AddListener(() => SelectAnswer(index));
+            answerButtons[i].onClick.AddListener(() =>
+{
+    Debug.Log("BUTTON CLICKED index = " + index);
+    SelectAnswer(index);
+});
         }
     }
 

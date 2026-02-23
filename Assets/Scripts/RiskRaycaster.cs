@@ -23,7 +23,24 @@ public class RiskRaycaster : MonoBehaviour
     {
         if(RiskGameManager.Instance.IsState(GameState.InMenu)) return;
 
-        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        Vector3 screenPos;
+
+if(Application.isMobilePlatform)
+{
+    if(Input.touchCount > 0){
+        screenPos = Input.GetTouch(0).position; // position du premier tap
+        Debug.Log("Tap");
+    }
+    else{
+        return; // pas de touch
+    }
+}
+else
+{
+    screenPos = Input.mousePosition; // desktop
+}
+
+Ray ray = mainCamera.ScreenPointToRay(screenPos);
 
         if(Physics.SphereCast(ray, radius, out RaycastHit hit, distance))
         {
@@ -38,11 +55,23 @@ public class RiskRaycaster : MonoBehaviour
                     currentHover.OnHoverEnter();
                 }
 
-                if(Input.GetMouseButtonDown(0))
-                {
-                   HandleClick(hit.collider.gameObject);
-
-                }
+                if (Application.isMobilePlatform)
+{
+    // Mobile : tap sur l'écran
+    if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+    {
+        Debug.Log("Tap2");
+        HandleClick(hit.collider.gameObject);
+    }
+}
+else
+{
+    // Desktop : clic souris
+    if (Input.GetMouseButtonDown(0))
+    {
+        HandleClick(hit.collider.gameObject);
+    }
+}
                 return;
             }
         }
